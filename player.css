@@ -1,0 +1,33 @@
+
+        .player {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: calc(var(--y) * -100% + 100%);
+            left: calc(var(--x) * 100%);
+            z-index: 10;
+            --w: 1;
+        }
+        .player::after, .player::before {
+            position: absolute;
+            display: block; content: '';
+            border-radius: 15%;
+            background-color: aqua;
+            width: calc(20% * var(--w)); height: calc(20% / var(--w));
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .player::before {
+            filter: blur(calc(var(--scale) * 0.08));
+        }
+#notification {
+    position: absolute;
+    width: 0px; height: 0px;
+    left: 50%;
+    top: 50%;
+}
+#notification > #notificationtext {
+    
+    width: calc(var(--scale) * 5);
+    text-align: center;
+    transform: translate(-50%, calc(-100% - var(--scale) * 0.24))
+}

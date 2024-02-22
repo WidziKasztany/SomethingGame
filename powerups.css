@@ -1,0 +1,73 @@
+.powerups {
+    position: absolute;
+    left: calc(var(--scale) * 0.3);
+    bottom: calc(var(--scale) * 0.3);
+    padding: calc(var(--scale) * 0.14);
+
+    background-color: rgba(0,0,0,0.3);
+    border-radius: calc(var(--scale) * 0.08);
+
+    --color: black;
+}
+.powerupsrow {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+}
+.powerupicon {
+    border-radius: 15%;
+    margin: calc(var(--scale) * 0.03);
+    width: calc(var(--scale) * 0.1);
+    height: calc(var(--scale) * 0.1);
+    position: relative;
+    border: calc(var(--scale) * 0.05) solid var(--color);
+}
+.powerupicon::before {
+    display: block; position: absolute; inset: 0; content: '';
+    border-radius: 15%;
+    border: calc(var(--scale) * 0.05) solid var(--color);
+    filter: blur(calc(var(--scale) * 0.08));
+}
+.poweruplevel {
+    position: relative;
+    top: calc(var(--scale) * 0.15);
+    transform: translateY(-50%);
+    margin: 0 calc(var(--scale) * 0.03);
+    width: calc(var(--scale) * 0.13);
+    height: calc(var(--scale) * 0.13);
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+}
+.poweruplevel::before {
+    position: absolute; display: block; content: '';
+    inset: 0;
+    filter: blur(calc(var(--scale) * 0.08));
+    border-radius: 50%;
+}
+.poweruplevel-active::before {
+    background-color: var(--color);
+}
+.poweruplevel-active {
+    background-color: var(--color);
+}
+
+.poweruplevels {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    display: flex;
+}
+
+.powerupentity {
+    position: absolute;
+    top: calc(var(--y) * -100% + 100%);
+    left: calc(var(--x) * 100% + 100%);
+    margin: 0;
+    z-index: 12;
+}
+.powerupanimation {
+    position: absolute;
+    margin: 0;
+    z-index: 12;
+}

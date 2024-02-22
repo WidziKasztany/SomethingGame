@@ -1,0 +1,53 @@
+.stamina {
+    position: absolute;
+    --multiplier: 1;
+    width: calc(var(--scale) * 3 * var(--multiplier));
+    height: calc(var(--scale) * 0.3);
+
+    left: 50%;
+    bottom: calc(var(--scale) * 0.6);
+    transform: translateX(-50%);
+
+    background-color: rgba(66,77,88,0.5);
+
+    --stamina: 0.3;
+    --usedstamina: 0.3;
+    --notenoughstamina: 0.5;
+}
+.stamina > div {
+    width: 100%; height: 100%;
+    inset: 0;
+    position: absolute;
+}
+.stamina > .staminastatus > div {
+    position: absolute;
+
+    width: calc(var(--stamina) * 100%);
+    height: 100%;
+    top: 0px;
+    left: 0px;
+
+    background-color: aqua;
+}
+.stamina > .staminastatus > div:nth-child(1) {
+    filter: blur(calc(var(--scale) * 0.1));
+}
+
+.stamina > .usedstamina > div {
+    position: absolute;
+
+    top: 0px; left: calc(var(--stamina) * 100%);
+    width: calc(var(--usedstamina) * 100% - var(--stamina) * 100%);
+    height: 100%;
+
+    background-color: rgba(255, 166, 0, 0.05);
+}
+.stamina > .usedstamina > div:nth-child(1) {
+    filter: blur(calc(var(--scale) * 0.1));
+}
+.stamina > .notenoughstamina {
+    width: calc(var(--notenoughstamina) * 100%);
+    height: 100%;
+
+    background-image: linear-gradient(to right, rgba(255,0,0,0.5), rgba(255,0,0,0.5));
+}

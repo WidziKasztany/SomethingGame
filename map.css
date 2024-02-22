@@ -1,0 +1,35 @@
+
+        .map {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(calc(-50% - var(--camerax) * 100%), calc(-50% + var(--cameray) * 100%));
+            width: var(--scale); height: var(--scale);
+        }
+        .block {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: calc(var(--y) * -100%);
+            left: calc(var(--x) * 100%);
+            z-index: calc(5 + var(--hitanimationstate));
+            transform: translate(50%, 50%);
+            --blockcolor: rgb(66, 77, 88);
+            --xknockdir: 0;
+            --yknockdir: 0;
+            --hitanimationstate: 0;
+            --xknockvel: calc(var(--hitanimationstate) * var(--xknockdir) * var(--scale) * 0.075);
+            --yknockvel: calc(var(--hitanimationstate) * var(--yknockdir) * var(--scale) * 0.075);
+        }
+        .block::after, .block::before {
+            position: absolute;
+            display: block; content: '';
+            background-color: rgba(255,255,255,0.06);
+            border-radius: 10%;
+            width: 80%; height: 80%;
+            top: 50%; left: 50%;
+            transform: translate(calc(-50% + var(--xknockvel)), calc(-50% - var(--yknockvel)));
+        }
+        .block::before {
+            width: 92%; height: 92%;
+            background-color: var(--blockcolor);
+            box-shadow: 0px 0px calc(var(--hitanimationstate) * var(--scale) / 3) var(--blockcolor);
+        }

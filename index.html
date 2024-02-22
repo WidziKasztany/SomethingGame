@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Something Game</title>
+    <style>
+        * {
+            margin: 0; padding: 0;
+            font-family: sans-serif;
+            color: white;
+            font-size: calc(var(--scale) * 0.24);
+        }
+        :root {
+            --scale: 70px;
+        }
+        body {
+            background-color: rgb(33, 38, 42);
+            overflow: hidden;
+        }
+    </style>
+    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="stamina.css">
+    <link rel="stylesheet" href="powerups.css">
+    
+    <script src="entity.js"></script>
+    <script src="utilities.js"></script>
+    <script src="player.js"></script>
+    <script src="map.js"></script>
+    <script src="chunk.js"></script>
+    <script src="hitbox.js"></script>
+    <script src="hitboxmark.js"></script>
+    <script src="block.js"></script>
+    <script src="poweruplevel.js"></script>
+    <script src="powerup.js"></script>
+    <script src="powerupanimation.js"></script>
+    
+</head>
+<body>
+    
+    <div class="map" style="--camerax:1;--cameray:1;">
+        <div class="player" style="--x:0;--y:0;">
+            <div id="notification">
+                <div id="notificationtext"></div>
+            </div>
+        </div>
+    </div>
+    <div id="playermovehitbox" style="inset:0;position:absolute;user-select:none;z-index:10;" onclick="player.move()"></div>
+
+    <div class="powerups">
+        <div>Upgrades:</div>
+    </div>
+    
+    <script>
+        const map = new Map(document.getElementsByClassName("map")[0]);
+        const player = new Player(document.getElementsByClassName("player")[0]);
+        setInterval(() => {
+            player.update();
+            map.update();
+        }, 10);
+        setInterval(() => {
+            map.updateChunksRadius();
+        }, 500);
+        setInterval(() => {
+            map.runTick();
+        }, 1000/20);
+        window.addEventListener("resize", () => { map.updateSizes(); });
+    </script>
+
+    <div class="stamina">
+        <div class="usedstamina">
+            <div></div>
+            <div></div>
+        </div>
+        <div class="staminastatus">
+            <div></div>
+            <div></div>
+        </div>
+        <div class="notenoughstamina">
+            <div></div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
